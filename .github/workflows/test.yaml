@@ -92,13 +92,11 @@ jobs:
     
       - name: Restore nuget packages
         run: |
-          cd 6.0/Apps/WeatherTwentyOne/src/
           dotnet restore WeatherTwentyOne.sln
 
       - name : Build iOS App
         shell: bash
         run: |
-          cd 6.0/Apps/WeatherTwentyOne/src
           dotnet build -f net7.0-ios -c Debug /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
 
 #       - name: Build and Run UnitTests
@@ -111,5 +109,5 @@ jobs:
         with:
           name: artifacts-ios
           path: |
-            6.0/Apps/WeatherTwentyOne/src/WeatherTwentyOne/bin/Debug/net7.0-ios/iossimulator-x64/**/*.app
+            bin/Debug/net7.0-ios/iossimulator-x64/**/*.app
       
