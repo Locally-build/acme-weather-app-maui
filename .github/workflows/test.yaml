@@ -19,6 +19,7 @@ jobs:
             operation: 'clone'
             username: ${{ secrets.PARALLELS_USERNAME }}
             password: ${{ secrets.PARALLELS_PASSWORD }}
+            insecure: true
             host_url: home.carloslapao.com:5470
             base_vm: github_builder_1
         - name: Configure Github Runner
@@ -29,6 +30,7 @@ jobs:
             username: ${{ secrets.PARALLELS_USERNAME }}
             password: ${{ secrets.PARALLELS_PASSWORD }}
             host_url: home.carloslapao.com:5470
+            insecure: true
             machine_name: ${{ steps.pull.outputs.machine_name }}
             run: |
                 curl -o /root/install-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/linux/install-runner.sh
