@@ -46,6 +46,7 @@ jobs:
                 /Users/install-runner.sh -u parallels -p /Users
                 /Users/configure-runner.sh -u parallels -p /Users/action-runner -o Locally-build -t ${{ secrets.GH_PAT }}
   buildiOS:
+    needs: create_runner
     runs-on: [self-hosted, macos]
     steps:
       - uses: actions/checkout@v2     
