@@ -21,12 +21,8 @@ jobs:
             password: ${{ secrets.PARALLELS_PASSWORD }}
             insecure: true
             host_url: home.carloslapao.com:5470
-            base_vm: github_builder_1
+            base_vm: macOS_Github_actions_runner
             start_after_op: true
-        # - name: test_vm_name
-        #   run: |
-        #     echo "VM Name: ${{ steps.pull.outputs.vm_id }}"
-        #     sleep 25
         - name: Configure Github Runner
           id: configure  
           uses: parallels/parallels-desktop-github-action@v1
@@ -38,9 +34,9 @@ jobs:
             insecure: true
             machine_name: ${{ steps.pull.outputs.vm_id }}
             run: |
-                curl -o /root/install-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/linux/install-runner.sh
-                curl -o /root/configure-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/linux/configure-runner.sh
-                curl -o /root/remove-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/linux/remove-runner.sh
+                curl -o /root/install-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/mac/install-runner.sh
+                curl -o /root/configure-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/mac/configure-runner.sh
+                curl -o /root/remove-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/mac/remove-runner.sh
                 chmod +x /root/install-runner.sh
                 chmod +x /root/configure-runner.sh
                 chmod +x /root/remove-runner.sh
