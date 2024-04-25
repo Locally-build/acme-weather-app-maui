@@ -12,14 +12,14 @@ jobs:
     steps:
         - name: Checkout code
           uses: actions/checkout@v2
-        - name: Pull From Catalog
+        - name: Clone VM
           id: pull
           uses: parallels/parallels-desktop-github-action@v1
           with:
             operation: 'clone'
             username: ${{ secrets.PARALLELS_USERNAME }}
             password: ${{ secrets.PARALLELS_PASSWORD }}
-            host_url: home.carloslapao.com
+            host_url: home.carloslapao.com:5470
             base_vm: github_builder_1
         - name: Configure Github Runner
           id: configure  
@@ -28,7 +28,7 @@ jobs:
             operation: 'run'
             username: ${{ secrets.PARALLELS_USERNAME }}
             password: ${{ secrets.PARALLELS_PASSWORD }}
-            host_url: home.carloslapao.com
+            host_url: home.carloslapao.com:5470
             machine_name: ${{ steps.pull.outputs.machine_name }}
             run: |
                 curl -o /root/install-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/linux/install-runner.sh
