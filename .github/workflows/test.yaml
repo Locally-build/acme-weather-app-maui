@@ -34,12 +34,12 @@ jobs:
             insecure: true
             machine_name: ${{ steps.pull.outputs.vm_id }}
             run: |
-                curl -o ~/install-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/mac/install-runner.sh
-                curl -o ~/configure-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/mac/configure-runner.sh
-                curl -o ~/remove-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/mac/remove-runner.sh
-                chmod +x ~/install-runner.sh
-                chmod +x ~/configure-runner.sh
-                chmod +x ~/remove-runner.sh
+                curl -o /Users/install-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/mac/install-runner.sh
+                curl -o /Users/configure-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/mac/configure-runner.sh
+                curl -o /Users/remove-runner.sh https://raw.githubusercontent.com/Parallels/prlctl-scripts/main/github/actions-runner/mac/remove-runner.sh
+                chmod +x /Users/install-runner.sh
+                chmod +x /Users/configure-runner.sh
+                chmod +x /Users/remove-runner.sh
 
-                ~/install-runner.sh -u parallels
-                ~/configure-runner.sh -u parallels -o Locally-build -t ${{ secrets.GH_PAT }}
+                /Users/install-runner.sh -u parallels
+                /Users/configure-runner.sh -u parallels -o Locally-build -t ${{ secrets.GH_PAT }}
