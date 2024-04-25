@@ -47,7 +47,7 @@ jobs:
                 /Users/configure-runner.sh -u parallels -p /Users/action-runner -o Locally-build -t ${{ secrets.GH_PAT }}
   buildiOS:
     needs: create_runner
-    runs-on: [self-hosted, macos]
+    runs-on: [self-hosted, macOS]
     steps:
       - uses: actions/checkout@v2     
     #   - name: Install the Apple certificate and provisioning profile
