@@ -23,10 +23,10 @@ jobs:
             host_url: home.carloslapao.com:5470
             base_vm: github_builder_1
             start_after_op: true
-        - name: test_vm_name
-          run: |
-            echo "VM Name: ${{ steps.pull.outputs.vm_id }}"
-            sleep 25
+        # - name: test_vm_name
+        #   run: |
+        #     echo "VM Name: ${{ steps.pull.outputs.vm_id }}"
+        #     sleep 25
         - name: Configure Github Runner
           id: configure  
           uses: parallels/parallels-desktop-github-action@v1
