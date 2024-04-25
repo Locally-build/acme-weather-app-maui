@@ -21,7 +21,7 @@ jobs:
             password: ${{ secrets.PARALLELS_PASSWORD }}
             insecure: true
             host_url: home.carloslapao.com:5470
-            base_vm: Maui DevBox
+            base_vm: macOS_Github_actions_runner
             start_after_op: true
         - name: Configure Github Runner
           id: configure  
