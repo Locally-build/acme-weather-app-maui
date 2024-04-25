@@ -21,7 +21,7 @@ jobs:
             password: ${{ secrets.PARALLELS_PASSWORD }}
             insecure: true
             host_url: home.carloslapao.com:5470
-            base_vm: 5df3dc3e-0fb0-4272-a46d-e4c3dda13ddc
+            base_vm: github_builder_1
             start_after_op: true
         - name: Configure Github Runner
           id: configure  
