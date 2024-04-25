@@ -15,7 +15,7 @@
 		<ApplicationTitle>acme-weather-app-maui</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.acme_weather_app_maui</ApplicationId>
+		<ApplicationId>com.parallels.acme_weather_app_maui</ApplicationId>
 		<ApplicationIdGuid>59b40ea3-27fd-4b0d-9eeb-40744bfe3c9c</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\acme.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
