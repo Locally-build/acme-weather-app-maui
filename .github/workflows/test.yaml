@@ -41,5 +41,5 @@ jobs:
                 chmod +x /Users/configure-runner.sh
                 chmod +x /Users/remove-runner.sh
 
-                /Users/install-runner.sh -u parallels
-                /Users/configure-runner.sh -u parallels -o Locally-build -t ${{ secrets.GH_PAT }}
+                /Users/install-runner.sh -u parallels -p /Users
+                /Users/configure-runner.sh -u parallels -p /Users -o Locally-build -t ${{ secrets.GH_PAT }}
