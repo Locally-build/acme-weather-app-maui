@@ -134,6 +134,7 @@ jobs:
             run: |
                 /Users/remove-runner.sh -u parallels -p /Users/action-runner -o Locally-build -t ${{ secrets.GH_PAT }}
         - name: Remove VM
+          if: always()
           id: remove
           uses: parallels/parallels-desktop-github-action@v1
           with:
