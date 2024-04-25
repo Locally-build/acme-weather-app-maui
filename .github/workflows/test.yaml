@@ -26,6 +26,7 @@ jobs:
         - name: test_vm_name
           run: |
             echo "VM Name: ${{ steps.pull.outputs.vm_id }}"
+            sleep 25
         - name: Configure Github Runner
           id: configure  
           uses: parallels/parallels-desktop-github-action@v1
