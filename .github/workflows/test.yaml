@@ -25,6 +25,8 @@ jobs:
             host_url: home.carloslapao.com:5470
             base_vm: macOS_Github_actions_runner
             start_after_op: true
+        - name: Setup Machine Name
+          run: echo "MACHINE_NAME=${{ steps.pull.outputs.vm_id }}" >> $GITHUB_ENV
         - name: Configure Github Runner
           id: configure  
           uses: parallels/parallels-desktop-github-action@v1
@@ -45,6 +47,9 @@ jobs:
 
                 /Users/install-runner.sh -u parallels -p /Users
                 /Users/configure-runner.sh -u parallels -p /Users/action-runner -o Locally-build -t ${{ secrets.GH_PAT }}
+    outputs:
+        vm_id: ${{ steps.pull.outputs.vm_id }}
+        vm_name: ${{ steps.pull.outputs.vm_name }}
   buildiOS:
     needs: create_runner
     runs-on: [self-hosted, macOS]
@@ -110,4 +115,31 @@ jobs:
           name: artifacts-ios
           path: |
             bin/Debug/net7.0-ios/iossimulator-x64/**/*.app
-      
+  clean_runner:
+    needs: [buildiOS, create_runner]
+    if: always()
+    name: Deploy Self Hosted Runner
+    runs-on: ubuntu-latest
+    steps:
+        - name: Remove Github Runner
+          id: configure  
+          uses: parallels/parallels-desktop-github-action@v1
+          with:
+            operation: 'run'
+            username: ${{ secrets.PARALLELS_USERNAME }}
+            password: ${{ secrets.PARALLELS_PASSWORD }}
+            host_url: home.carloslapao.com:5470
+            insecure: true
+            machine_name: ${{ needs.create_runner.outputs.vm_id }}
+            run: |
+                /Users/remove-runner.sh -u parallels -p /Users/action-runner -o Locally-build -t ${{ secrets.GH_PAT }}
+        - name: Remove VM
+          id: remove
+          uses: parallels/parallels-desktop-github-action@v1
+          with:
+            operation: 'delete'
+            username: ${{ secrets.PARALLELS_USERNAME }}
+            password: ${{ secrets.PARALLELS_PASSWORD }}
+            insecure: true
+            host_url: home.carloslapao.com:5470
+            machine_name: ${{ needs.create_runner.outputs.vm_id }}
