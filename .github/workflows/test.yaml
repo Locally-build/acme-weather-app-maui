@@ -97,7 +97,7 @@ jobs:
     
       - name: Restore nuget packages
         run: |
-          dotnet restore WeatherTwentyOne.sln
+          dotnet restore acme-weather-app-maui.sln
 
       - name : Build iOS App
         shell: bash
