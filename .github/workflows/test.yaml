@@ -45,8 +45,6 @@ jobs:
                 chmod +x /Users/configure-runner.sh
                 chmod +x /Users/remove-runner.sh
 
-                /Users/install-runner.sh -u parallels -p /Users
-                /Users/configure-runner.sh -u parallels -p /Users/action-runner -o Locally-build -t ${{ secrets.GH_PAT }}
     outputs:
         vm_id: ${{ steps.pull.outputs.vm_id }}
         vm_name: ${{ steps.pull.outputs.vm_name }}
