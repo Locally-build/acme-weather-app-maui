@@ -51,6 +51,7 @@ jobs:
         vm_id: ${{ steps.pull.outputs.vm_id }}
         vm_name: ${{ steps.pull.outputs.vm_name }}
   buildiOS:
+    if: false
     needs: create_runner
     runs-on: [self-hosted, macOS]
     steps:
@@ -117,8 +118,8 @@ jobs:
             bin/Debug/net7.0-ios/iossimulator-x64/**/*.app
   clean_runner:
     needs: [buildiOS, create_runner]
-    if: always()
-    name: Deploy Self Hosted Runner
+    if: false
+    name: Clean Runner
     runs-on: ubuntu-latest
     steps:
         - name: Remove Github Runner
